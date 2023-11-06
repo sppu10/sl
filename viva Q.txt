@@ -1,0 +1,376 @@
+// bank
+
+Explain the purpose of the FOREIGN KEY constraints in the database schema you created.
+
+How would you add a new customer to the database, including their accounts and loans, if applicable?
+
+What does the SELECT DISTINCT keyword do, and why is it used in your queries?
+
+Describe the difference between an INNER JOIN and a LEFT JOIN in SQL. Provide an example of when you might use each.
+
+What is the significance of the GROUP BY clause in SQL, and how is it used in your queries?
+
+How would you find the total number of loans at each branch in your database?
+
+Can you explain the purpose of the AVG and SUM aggregate functions in SQL? How are they used in your queries?
+
+What are some potential issues or errors that could arise when working with a complex database like this? How would you address them?
+
+How would you modify the database schema to track the interest rates associated with each loan?
+
+Explain the concept of normalization in database design and how it applies to your database schema.
+
+If you needed to add a new branch to the database, what steps would you take, and what changes would you make to the schema?
+
+What are the advantages and disadvantages of using decimal data types with fixed precision (e.g., DECIMAL(10, 2)) for financial values in the database?
+
+// Answers
+
+
+Purpose of FOREIGN KEY constraints: Ensure data integrity by linking tables based on related data.
+
+Adding a new customer: Insert records into the Customer, Account, and Loan tables as needed.
+
+SELECT DISTINCT: Retrieves unique values from a column.
+
+INNER JOIN vs. LEFT JOIN: INNER JOIN returns matching records, LEFT JOIN returns all records from the left table and matching records from the right.
+
+GROUP BY: Groups rows with identical values in specified columns.
+
+Total number of loans at each branch: Use COUNT with GROUP BY.
+
+AVG and SUM: AVG calculates the average, SUM calculates the sum of values.
+
+Database issues: Data consistency, performance, and security; address with proper design and maintenance.
+
+Adding interest rates: Add a new column to the Loan table for interest rates.
+
+Normalization: Organizing data to minimize redundancy and improve efficiency.
+
+Adding a new branch: Add a new record to the Branch table.
+
+Advantages of DECIMAL data type: Precise representation of financial values; Disadvantages: storage cost, potential for rounding errors.
+
+
+// RESULT
+
+What is the purpose of the DELIMITER command in your script?
+
+Short Answer: It changes the delimiter for the stored procedure definition.
+Explain the purpose of the "Result" table in your database.
+
+Short Answer: It stores student results, including their names and classes.
+What is the role of the "proc_Grade" stored procedure?
+
+Short Answer: It categorizes students based on their total marks and inserts the result into the "Result" table.
+How is the student's class determined within the "proc_Grade" procedure?
+
+Short Answer: It's determined based on their total marks using conditional statements.
+What sample data is inserted into the "Result" table, and what are the expected results?
+
+Short Answer: John, Alice, and Bob are inserted with their respective classes. The expected classes are based on their total marks.
+How can you call the "proc_Grade" stored procedure with specific student data?
+
+Short Answer: Use the CALL statement with the student's name and total marks as parameters.
+What would you see when you execute the SELECT * FROM Result query at the end of the script?
+
+Short Answer: It will display the student names and their respective classes.
+These questions cover the key aspects of your SQL script and its functionality. Be prepared to provide brief and concise answers during your viva.
+
+
+// ROLL CALL
+
+What is the purpose of the oldRollCall and newRollCall tables in your script?
+
+Short Answer: oldRollCall contains existing data, and newRollCall will receive merged data.
+Explain the role of the Merge stored procedure.
+
+Short Answer: It merges unique records from oldRollCall into newRollCall to avoid duplicates.
+Why use a cursor in the Merge procedure, and what is its purpose?
+
+Short Answer: The cursor is used to iterate through records in oldRollCall and check for duplicates when inserting into newRollCall.
+What is the purpose of the CONTINUE HANDLER FOR NOT FOUND statement in the cursor declaration?
+
+Short Answer: It handles the situation when no more records are found, setting the done flag to TRUE.
+What happens if a record in oldRollCall already exists in newRollCall?
+
+Short Answer: The record is not inserted into newRollCall to avoid duplicates.
+How can you call the Merge procedure to perform the data merge?
+
+Short Answer: Use the CALL Merge(); statement.
+What data will you see in the oldRollCall and newRollCall tables after calling the Merge procedure?
+
+Short Answer: oldRollCall remains unchanged, and newRollCall contains merged data.
+
+
+//TEACHER
+
+
+
+What does "sudo systemctl start mongod" do?
+
+Short Answer: It starts the MongoDB service.
+How do you access the MongoDB shell?
+
+Short Answer: Use the "mongo" command.
+What is the purpose of the "use ass4" command in your script?
+
+Short Answer: It selects the "ass4" database to work with.
+Explain the purpose of the "db.Teachers.insertMany" commands in your script.
+
+Short Answer: They insert multiple teacher documents into the "Teachers" collection.
+What does "db.Students.insertMany" do, and what kind of data is added?
+
+Short Answer: It inserts multiple student documents into the "Students" collection, including student names, roll numbers, and classes.
+How do you find and filter teachers who belong to the "CS" department?
+
+Short Answer: Use "db.Teachers.find({ dname: "CS" });".
+What is the purpose of the "db.Teachers.find" command with multiple filter conditions?
+
+Short Answer: It finds teachers from departments "CS," "IT," or "ENTC" with a salary greater than or equal to 10,000.
+Explain the "db.Teachers.update" command with the "upsert" option.
+
+Short Answer: It updates the teacher named "Praveen" to have 10 years of experience, and if the teacher doesn't exist, it creates a new document.
+How do you remove teachers from the "IT" department?
+
+Short Answer: Use "db.Teachers.remove({ dname: "IT" });" to remove teachers from the "IT" department.
+What does "db.Teachers.find().sort({ Tname: 1 }).limit(3);" do?
+
+Short Answer: It sorts the teacher documents by name in ascending order and limits the result to the first 3 teachers.
+
+
+// AGGREGATION 
+
+
+
+What does "sudo systemctl start mongod" do?
+
+Short Answer: It starts the MongoDB service (mongod).
+How do you access the MongoDB shell?
+
+Short Answer: Use the "mongo" command.
+What is the purpose of the "use ass5" command in your script?
+
+Short Answer: It selects the "ass5" database for subsequent operations.
+Explain the purpose of the "db.Books.insertMany" commands.
+
+Short Answer: They insert multiple book documents into the "Books" collection with attributes like title, author, genre, price, and publish date.
+How do you calculate the average price of books using aggregation in MongoDB?
+
+Short Answer: It's done using the "$group" stage with "$avg" applied to the "price" field.
+What does "db.Books.insertOne" do, and what data is inserted with this command?
+
+Short Answer: It inserts a single book document into the "Books" collection with attributes such as title, author, genre, price, and publish date.
+How do you find the most expensive book in each genre using aggregation?
+
+Short Answer: You use the "$group" stage to group by "genre" and apply "$max" to the "price" field.
+How do you count the number of books in each genre using aggregation?
+
+Short Answer: It's achieved through the "$group" stage, grouping by "genre" and counting using "$sum."
+How do you count the number of books written by each author using aggregation?
+
+Short Answer: The "$group" stage groups by "author," and "$sum" is used to count the books written by each author.
+How do you sort books by publish date in descending order using the "sort" method?
+
+Short Answer: Use "db.Books.find().sort({ publish_date: -1 });".
+How do you create an index on the "title" field, and what's the purpose of creating indexes?
+
+Short Answer: It's created using "db.Books.createIndex({ title: 1 });" Indexes improve query performance by making data retrieval faster.
+What command lists the existing indexes for the "Books" collection?
+
+Short Answer: Use "db.Books.getIndexes();" to list existing indexes for the collection.
+These questions cover the key operations in your MongoDB script. Be prepared to provide brief and concise answers during your viva.
+
+
+// MAP REDUCE  
+
+
+What does "sudo systemctl start mongod" do?
+
+Short Answer: It starts the MongoDB service (mongod).
+How do you access the MongoDB shell?
+
+Short Answer: Use the "mongo" command.
+What is the purpose of the "use ass5" command in your script?
+
+Short Answer: It selects the "ass5" database for subsequent operations.
+Explain the purpose of the "db.Books.insertMany" commands.
+
+Short Answer: They insert multiple book documents into the "Books" collection with attributes like title, author, genre, price, and publish date.
+How do you calculate the average price of books using aggregation in MongoDB?
+
+Short Answer: It's done using the "$group" stage with "$avg" applied to the "price" field.
+What does "db.Books.insertOne" do, and what data is inserted with this command?
+
+Short Answer: It inserts a single book document into the "Books" collection with attributes such as title, author, genre, price, and publish date.
+How do you find the most expensive book in each genre using aggregation?
+
+Short Answer: You use the "$group" stage to group by "genre" and apply "$max" to the "price" field.
+How do you count the number of books in each genre using aggregation?
+
+Short Answer: It's achieved through the "$group" stage, grouping by "genre" and counting using "$sum."
+How do you count the number of books written by each author using aggregation?
+
+Short Answer: The "$group" stage groups by "author," and "$sum" is used to count the books written by each author.
+How do you sort books by publish date in descending order using the "sort" method?
+
+Short Answer: Use "db.Books.find().sort({ publish_date: -1 });".
+How do you create an index on the "title" field, and what's the purpose of creating indexes?
+
+Short Answer: It's created using "db.Books.createIndex({ title: 1 });" Indexes improve query performance by making data retrieval faster.
+What command lists the existing indexes for the "Books" collection?
+
+Short Answer: Use "db.Books.getIndexes();" to list existing indexes for the collection.
+These questions cover the key operations in your MongoDB script. Be prepared to provide brief and concise answers during your viva.
+
+
+
+// FINE
+
+
+
+Explain the purpose of the "borrower" table in your script.
+
+Short Answer: It stores information about library borrowers, including roll number, book details, and their status.
+What does the "fine" table store, and why is it used in your database?
+
+Short Answer: The "fine" table stores fine details for overdue books. It's used to track fines imposed on borrowers.
+Describe the functionality of the "calfine2" stored procedure.
+
+Short Answer: "calfine2" calculates fines for overdue library books, updates the borrower's status, and records the fine details.
+How does the "calfine2" procedure handle exceptions?
+
+Short Answer: It uses an EXIT HANDLER for SQLEXCEPTION to handle cases where the record is not found.
+What information does the "calfine2" procedure need as input, and what does it return as output?
+
+Short Answer: It takes the borrower's roll number and the name of the overdue book as input and returns the calculated fine.
+How is the fine amount calculated within the "calfine2" procedure?
+
+Short Answer: The fine amount is based on the number of days late, with a rate of 50 per day if more than 30 days late, and 5 per day otherwise.
+What happens to the borrower's status in the "calfine2" procedure?
+
+Short Answer: The status is updated to 'R' (Returned) for the specific book once the fine is calculated.
+After calling the "calfine2" procedure, what data will you see when you execute SELECT * FROM fine?
+
+Short Answer: You will see the fine details, including roll number, date, and fine amount for the overdue book.
+
+
+// VIEW  
+
+
+
+Explain the purpose of the "ps8" database in your script.
+
+Short Answer: It's a database for storing student records.
+What does the "student_records" table store, and what are the key columns in it?
+
+Short Answer: The table stores student information, including name, class, address, grades, enrollment date, subject name, and attendance. The primary key is "sid."
+How is data inserted into the "student_records" table, and what information is added?
+
+Short Answer: Data is inserted using INSERT INTO, including student names, classes, addresses, grades, enrollment dates, subject names, and attendance.
+What is the purpose of the "studentview" view, and what columns does it select?
+
+Short Answer: The view selects specific columns (sid, Sname, grades, attendance) from the "student_records" table.
+Why create an index on the 'Sname' column, and what is the purpose of this index?
+
+Short Answer: The index improves search performance for the 'Sname' column, making it faster to retrieve data based on student names.
+How can you display the contents of the "studentview" view in your script?
+
+Short Answer: Use SELECT * FROM studentview;.
+What does the "show index from student_records" command display, and what information does it provide?
+
+Short Answer: It displays information about the indexes on the "student_records" table, including the index name, column, and type.
+
+
+
+
+// EXTERNAL CHANGES 
+
+
+If an external entity asks you to make changes to your MySQL script, they might request modifications or additional functionality. Here are some possible changes and the corresponding SQL codes to implement them:
+
+Add a new table: To create a new table in your database, use the following code:
+
+sql
+Copy code
+CREATE TABLE NewTable (
+    column1 datatype,
+    column2 datatype,
+    -- Define table columns here
+);
+Modify an existing table: To alter an existing table, you can use SQL statements like ALTER TABLE:
+
+Add a new column:
+
+sql
+Copy code
+ALTER TABLE TableName
+ADD NewColumn datatype;
+
+Modify a column (e.g., change data type):
+
+sql
+Copy code
+ALTER TABLE TableName
+MODIFY ColumnName new_datatype;
+
+Rename a column:
+
+sql
+Copy code
+ALTER TABLE TableName
+CHANGE OldColumnName NewColumnName datatype;
+
+Insert more data: To add additional data to an existing table, you can use INSERT INTO statements similar to what you've used in your script.
+
+sql
+Copy code
+INSERT INTO TableName (column1, column2, ...)
+VALUES (value1, value2, ...);
+
+Update data: To update existing data in a table, use the UPDATE statement:
+
+sql
+Copy code
+UPDATE TableName
+SET column1 = new_value1, column2 = new_value2
+WHERE condition;
+
+Delete data: To remove specific records from a table, use the DELETE statement:
+
+sql
+Copy code
+DELETE FROM TableName
+WHERE condition;
+
+Create additional constraints: To add constraints like UNIQUE, CHECK, or INDEX, use SQL statements within your CREATE TABLE or ALTER TABLE commands. For example:
+
+Adding a UNIQUE constraint:
+
+sql
+Copy code
+ALTER TABLE TableName
+ADD CONSTRAINT constraint_name UNIQUE (column_name);
+
+Adding an INDEX:
+
+sql
+Copy code
+CREATE INDEX index_name ON TableName (column_name);
+
+Retrieve data: If someone asks you to fetch specific data from the database, use SELECT statements with appropriate conditions.
+
+sql
+Copy code
+SELECT column1, column2, ...
+FROM TableName
+WHERE condition;
+
+These are some common changes you might need to make to your MySQL script based on external requests. Always ensure the SQL statements are correct and that you have appropriate backups before making changes to a production database.
+
+
+
+
+
+
+
